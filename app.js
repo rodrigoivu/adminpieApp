@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 });
 
 //rutas base
+app.use('/',express.static('client', { redirect: false }));
 app.use('/api', user_routes);
 app.use('/api', busqueda_routes);
 app.use('/api', profesional_routes);
