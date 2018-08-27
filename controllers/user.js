@@ -135,10 +135,10 @@ function saveUser(req,res){
 					}
 				});
 			}else{
-				res.status(200).send({message: 'Rellena todos los campos'});
+				res.status(400).send({message: 'Rellena todos los campos'});
 			}
 	}else{
-		res.status(200).send({message: 'Introduce la contraseña'});
+		res.status(400).send({message: 'Introduce la contraseña'});
 	}
 
 }
@@ -186,7 +186,7 @@ function uploadImage(req,res){
 		var extensionesValidas = [ '.png', '.jpg', '.gif', '.jpeg'];
 
 		//if(file_ext == '.png' || file_ext == '.jpg' || file_ext == '.gif'){
-			if( extensionesValidas.indexOf(file_ext) > 0 ){
+			if( extensionesValidas.indexOf(file_ext) >= 0 ){
 			//personalizar Nombre
 			var nombreArchivo = `${userId}-${ new Date().getMilliseconds() }${ file_ext }`;
 

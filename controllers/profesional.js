@@ -43,7 +43,7 @@ function saveProfesional(req,res){
 					}
 				});
 	}else{
-		res.status(200).send({message: 'User no indicado'});
+		res.status(400).send({message: 'User no indicado'});
 	}
 }
 
@@ -110,6 +110,22 @@ function listProfesionales(req,res){
 }
 
 //================================================
+// MOSTRAR UN PROFESIONAL
+//================================================
+
+function buscaProfesional(req,res){
+	var usetId = req.params.id; // éste parámetro se pone en el url despues 
+	
+	Profesional.findOne({'user': usetId}, (err, profesionalFound) => {
+		if(err){
+			res.status(500).send({message: 'Error al buscar profesional'});
+		}else{
+			res.status(200).send({profesional: profesionalFound});
+		}
+	});
+}
+
+//================================================
 // ELIMINAR PROFESIONAL
 //================================================
 
@@ -132,5 +148,6 @@ module.exports = {
 	saveProfesional,
 	updateProfesional,
 	listProfesionales,
-	deleteProfesional
+	deleteProfesional,
+	buscaProfesional
 };
