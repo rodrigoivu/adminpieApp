@@ -2,6 +2,7 @@
 
 var express = require ('express');
 var bodyParser = require ('body-parser');
+var path = require('path');
 
 var app = express();
 
@@ -53,7 +54,7 @@ app.use('/api', terapeuta_routes);
 app.use('/api', pesquisa_routes);
 
 app.get('*', function(req,res,next){
-	res.sendFile(path.resolve('3977/client/index.html'));
+	res.sendFile(path.resolve('client/index.html'));
 });
 
 module.exports = app;
